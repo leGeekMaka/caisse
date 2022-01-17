@@ -25,3 +25,6 @@ Route::get('/responsible', function(){
 Route::get('/control', function(){
     return view('inspector');
 });
+Route::get('/direction', function(){
+    return view('direction');
+});

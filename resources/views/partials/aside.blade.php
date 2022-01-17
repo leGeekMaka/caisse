@@ -55,7 +55,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="control3.html">
+            <a href="{{url('direction')}}">
               <span class="icon">
                 <svg
                   width="22"

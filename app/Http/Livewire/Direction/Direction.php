@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Direction;
 
 
 use App\Models\Employer;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Direction extends Component
@@ -21,7 +22,7 @@ class Direction extends Component
     {
         return view('livewire.direction.direction',[
             'directions' => Employer::where('status', 'En attente')
-                                    ->where('direction', null)
+                                    ->where('direction',"")
                                     ->where('responsible','<>', null)
                                     ->where('control','<>', null)
                                     ->get()
@@ -48,6 +49,7 @@ class Direction extends Component
                 'direction' => $this->direction,
                 'reason' => $this->reason,
                 'status' => "accepté",
+                'token' => Str::random(32),
             ]);
         }
 

@@ -24,6 +24,8 @@ class CreateEmployersTable extends Migration
             $table->string('control',20)->nullable();
             $table->string('direction',20)->nullable();
             $table->text('reason')->nullable();
+            $table->text('token')->nullable();
+            $table->string('isPaid',5)->nullable();
             $table->timestamps();
         });
     }

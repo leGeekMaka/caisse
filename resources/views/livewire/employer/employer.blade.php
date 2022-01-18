@@ -108,7 +108,7 @@
                                 <div class="input-style-1">
                                     <label>Piece jointe</label>
                                     <input class="form-control" type="file" name="path" wire:model.defer="path" placeholder="piece jointe" />
-                                   
+                                    <div wire:loading wire:target="path">Téléchargement...</div>
                                 </div>
                                 <div class="text-center">
                                     <button class="main-btn active-btn-outline rounded-md btn-hover"

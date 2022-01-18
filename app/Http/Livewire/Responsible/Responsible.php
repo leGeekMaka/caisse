@@ -14,7 +14,8 @@ class Responsible extends Component
           $reason,
           $responsible,
           $status,
-          $employeId
+          $employeId,
+          $edit = "false"
           ;
 
     public function render()
@@ -47,8 +48,13 @@ class Responsible extends Component
             Employer::find($this->employeId)->update([
                 'reason' => $this->reason,
                 'responsible' => $this->responsible,
-                'status' => "refused",
+                'status' => "refuse",
             ]);
+
+            $this->reset('object','message','reason','responsible','path','status','employeId');
+            $this->emit('closeModal');
+            $this->dispatchBrowserEvent('closeAlert');
+            session()->flash('message', 'Démande enregistreé avec succès.');
         }
 
 
@@ -58,9 +64,23 @@ class Responsible extends Component
                 'reason' => $this->reason,
                 'responsible' => $this->responsible,
             ]);
+
+            $this->reset('object','message','reason','responsible','path','status','employeId');
+            $this->emit('closeModal');
+            $this->dispatchBrowserEvent('closeAlert');
+            session()->flash('message', 'Démande enregistreé avec succès.');
         }
 
     }
+
+    public function edit($employeId){
+        $this->edit = "true";
+        $employe = Employer::find($employeId);
+        $this->reason = $employe->reason;
+        $this->responsible = $employe->responsible;
+        $this->employeId = $employe->id;
+    }
+
     public function cancel(){
         $this->reset('object','message','reason','responsible','path','status','employeId');
 

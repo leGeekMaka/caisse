@@ -75,12 +75,10 @@
                                                     data-bs-toggle="modal" data-bs-target="#ModalTwo">
                                                 <i class="lni lni-eye"></i>
                                             </button>
-                                            <button class="edit" data-bs-toggle="modal">
-                                                <i class="lni lni-pencil"></i>
-                                            </button>
-                                            <button class="text-danger" data-bs-toggle="modal">
-                                                <i class="lni lni-trash-can"></i>
-                                            </button>
+{{--                                            <button wire:click="edit({{$responsible->id}})" class="edit"--}}
+{{--                                                    data-bs-toggle="modal" data-bs-target="#ModalTwo">--}}
+{{--                                                <i class="lni lni-pencil"></i>--}}
+{{--                                            </button>--}}
                                         </div>
                                     </td>
                                 </tr>
@@ -108,7 +106,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form wire:submit.prevent="update" enctype="multipart/form-data" >
+
                                 <div class="input-style-1">
                                     <label>Objet</label>
                                     <input type="text" disabled wire:model="object" placeholder="objet" />
@@ -142,11 +140,23 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button class="main-btn active-btn-outline rounded-md btn-hover"
-                                            type="submit">Enregistrer
-                                    </button>
+                                    @if($edit === "true")
+                                        <button class="main-btn danger-btn-outline rounded-md btn-hover" data-bs-dismiss="modal"
+                                                wire:click="cancel">Annuler
+                                        </button>
+                                        <button class="main-btn active-btn-outline rounded-md btn-hover"
+                                                wire:click="update">Modifier
+                                        </button>
+                                    @else
+                                        <button class="main-btn danger-btn-outline rounded-md btn-hover" data-bs-dismiss="modal"
+                                                wire:click="cancel">Annuler
+                                        </button>
+                                        <button class="main-btn active-btn-outline rounded-md btn-hover"
+                                                wire:click="update">Enregistrer
+                                        </button>
+                                    @endif
                                 </div>
-                            </form>
+
                         </div>
                     </div>
                 </div>

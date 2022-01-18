@@ -6,7 +6,7 @@
       </div>
       <nav class="sidebar-nav">
         <ul>
-          <li class="nav-item active">
+          <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
             <a href="{{url('home')}}" >
               <span class="icon">
                 <svg width="22" height="22" viewBox="0 0 22 22">
@@ -18,7 +18,7 @@
               <span class="text">Accueil</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->is('responsible') ? 'active' : '' }}">
             <a href="{{url('responsible')}}">
               <span class="icon">
                 <svg
@@ -36,7 +36,7 @@
               <span class="text">Responsable employé</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->is('control') ? 'active' : '' }}">
             <a href="{{url('control')}}">
               <span class="icon">
                 <svg
@@ -54,7 +54,7 @@
               <span class="text">Contrôle de Gestion  </span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item {{ request()->is('direction') ? 'active' : '' }} ">
             <a href="{{url('direction')}}">
               <span class="icon">
                 <svg

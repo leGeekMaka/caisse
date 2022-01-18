@@ -12,12 +12,14 @@ class Inspector extends Component
         $message,
         $path,
         $control,
-        $employeId
+        $employeId,
+        $fileName,
+        $name = "false"
     ;
     public function render()
     {
         return view('livewire.inspector.inspector',[
-            'inspectors' => Employer::where('status','En attente')
+            'inspectors' => Employer::where('status',config('status.pending'))
                                       ->where('responsible','<>',null)
                                       ->where('control',null)
                                       ->get()
@@ -27,11 +29,12 @@ class Inspector extends Component
     public function display($idEmploye){
 
         $employer = Employer::where('id', $idEmploye)->first();
-
+        $this->name = "true";
         $this->object = $employer->object;
         $this->message = $employer->message;
         $this->control = $employer->control;
         $this->path = $employer->path;
+        $this->fileName = $employer->fileName;
         $this->employeId = $employer->id;
     }
 
@@ -40,9 +43,15 @@ class Inspector extends Component
         Employer::find($this->employeId)->update([
             'control' => $this->control,
         ]);
+        $this->name = "false";
+
+        $this->emit('closeModal');
+        $this->dispatchBrowserEvent('closeAlert');
+        session()->flash('message', 'Action enregistreé avec succès.');
     }
 
     public function cancel(){
         $this->reset('object','message','path','employeId');
+        $this->name = "false";
     }
 }

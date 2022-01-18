@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 class Employer extends Component
 {
     use WithFileUploads;
-    public $object, $message, $status, $path, $fileName,$employeId,$edit = "false";
+    public $object, $message, $status, $path, $fileName,$employeId,$edit = "false", $token;
     public function render()
     {
         return view('livewire.employer.employer', [
@@ -116,9 +116,14 @@ class Employer extends Component
         }
     }
 
+    public function getToken($employeId){
+        $employe = ModelsEmployer::find($employeId);
+        $this->token = $employe->token;
+    }
     public function cancel(){
         $this->object = "";
         $this->message = "";
         $this->resetErrorBag();
+        $this->token = "";
     }
 }

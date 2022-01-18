@@ -21,8 +21,8 @@ class Direction extends Component
     public function render()
     {
         return view('livewire.direction.direction',[
-            'directions' => Employer::where('status', 'En attente')
-                                    ->where('direction',"")
+            'directions' => Employer::where('status', config('status.pending'))
+                                    ->where('direction',null)
                                     ->where('responsible','<>', null)
                                     ->where('control','<>', null)
                                     ->get()
@@ -48,9 +48,13 @@ class Direction extends Component
             Employer::find($this->employeId)->update([
                 'direction' => $this->direction,
                 'reason' => $this->reason,
-                'status' => "accepté",
-                'token' => Str::random(32),
+                'status' => "validate",
+                'token' => Str::random(7),
             ]);
+
+            $this->emit('closeModal');
+            $this->dispatchBrowserEvent('closeAlert');
+            session()->flash('message', 'Action enregistreé avec succès.');
         }
 
         if ($this->direction === "refuse")
@@ -58,8 +62,12 @@ class Direction extends Component
             Employer::find($this->employeId)->update([
                 'direction' => $this->direction,
                 'reason' => $this->reason,
-                'status' => "refusé",
+                'status' => "refuse",
             ]);
+
+            $this->emit('closeModal');
+            $this->dispatchBrowserEvent('closeAlert');
+            session()->flash('message', 'Action enregistreé avec succès.');
         }
     }
 

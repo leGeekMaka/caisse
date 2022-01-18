@@ -70,6 +70,10 @@
                           </td>
                           <td>
                             <div class="action">
+                                <button wire:click="getToken({{$employer->id}})" class="edit"
+                                        data-bs-toggle="modal" data-bs-target="#Modalfour">
+                                    <i class="lni lni-eye"></i>
+                                </button>
                               <button wire:click="edit({{$employer->id}})" class="edit"
                                       data-bs-toggle="modal" data-bs-target="#ModalTwo" data-bs-toggle="modal">
                                   <i class="lni lni-pencil"></i>
@@ -173,6 +177,28 @@
                             <button data-bs-dismiss="modal" wire:click="$emit('destroy')" class="main-btn danger-btn rounded-full btn-hover m-1"
                             > Supprimer
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{{--    modal afficher le token--}}
+
+    <div class="warning-modal">
+        <div wire:ignore.self class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+             id="Modalfour" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content card-style warning-card">
+                    <div class="modal-header px-0 border-0 d-flex justify-content-end ">
+                        <button class="border-0 bg-transparent h2" wire:click="cancel" data-bs-dismiss="modal">
+                            <i class="lni lni-cross-circle"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                           <h6 class="display-6"> Token : {{$token}}</h6>
                         </div>
                     </div>
                 </div>

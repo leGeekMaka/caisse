@@ -20,7 +20,7 @@ class Responsible extends Component
     public function render()
     {
         return view('livewire.responsible.responsible', [
-            'responsibles' => Employer::where('status','En attente')
+            'responsibles' => Employer::where('status',config('status.pending'))
                                         ->where('responsible',null)
                                         ->get(),
         ]);

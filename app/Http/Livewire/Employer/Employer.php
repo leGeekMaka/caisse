@@ -11,11 +11,10 @@ class Employer extends Component
 {
     use WithFileUploads;
     public $object, $message, $status, $path, $fileName,$employeId,$edit = "false";
-    const STATUS_1 = "En attente", STATUS_2 = "Accepté";
     public function render()
     {
         return view('livewire.employer.employer', [
-            'employers' => ModelsEmployer::all(),
+            'employers' => ModelsEmployer::orderByDesc('created_at')->get(),
         ]);
     }
 
@@ -34,7 +33,7 @@ class Employer extends Component
                 'message' => $this->message,
                 'path' => $this->path ? $this->path->store('attach') : '',
                 'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0] : '', // explode renvoi un tableau et j'affiche la premier élement du tableau
-                'status' => Self::STATUS_1,
+                'status' => config('status.pending'), //
             ]);
 
             $this->reset('object','message','path','fileName');

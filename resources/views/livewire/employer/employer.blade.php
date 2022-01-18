@@ -53,7 +53,17 @@
                             <p> {{ $employer->fileName }} </p>
                           </td>
                           <td>
-                            <p> <span class="status-btn close-btn"> {{ $employer->status }} </span> </p>
+                            <p>
+                                @if($employer->status === "pending")
+                                <span class="status-btn close-btn"> En attente </span>
+                                @endif
+                                @if($employer->status === "refuse")
+                                <span class="status-btn close-btn"> Refusé </span>
+                              @endif
+                              @if($employer->status === "validate")
+                                <span class="status-btn success-btn"> accepté </span>
+                              @endif
+                            </p>
                           </td>
                           <td>
                             <p>{{$employer->created_at}}</p>

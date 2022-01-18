@@ -18,7 +18,7 @@ class Employer extends Component
         ]);
     }
 
-    protected $listeners = ['postAdded' => 'incrementPostCount'];
+
 
     public $rules = [
         'object' => 'required',
@@ -26,22 +26,27 @@ class Employer extends Component
     ];
     public function store(){
 
-      //  $path = $this->path->store('paths') ;
+      //dd($this->path->getClientOriginalName());
+      //$name = explode('.', $this->path->getClientOriginalName())[0];
+      //dd($name);
+      //$store = $this->path->store('attach');
+      //dd($store);
         $this->validate();
         ModelsEmployer::create([
             'object' => $this->object,
             'message' => $this->message,
-            'path' => 'test',
-            'fileName' => 'test',
+            'path' => $this->path ? $this->path->store('attach') : '',
+            'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0] : '', // explode renvoi un tableau et j'affiche la premier élement du tableau
             'status' => Self::STATUS_1,
         ]);
 
         $this->object = "";
         $this->message = "";
-        
-        session()->flash('message', 'Démande enregistreé avec succès.');
+
         $this->emit('closeModal');
+        $this->emit('fileUploaded');
         $this->dispatchBrowserEvent('closeAlert');
+        session()->flash('message', 'Démande enregistreé avec succès.');
     }
 
     public function cancel(){

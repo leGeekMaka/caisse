@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="input-style-1">
                                     <label>motif du refus</label>
-                                    <textarea class="form-control"  type="text" wire:model="reason"
+                                    <textarea class="form-control" type="text" wire:model="reason"
                                               placeholder="Votre motif" cols="15" rows="5"></textarea>
                                 </div>
                                 <div class="select-style-1">

@@ -84,7 +84,8 @@
           </div>
 
           <div class="warning-modal">
-                <div wire:ignore.self class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"  id="ModalTwo" tabindex="-1" aria-hidden="true">
+                <div wire:ignore.self class="modal fade mod" data-bs-backdrop="static" data-bs-keyboard="false"
+                     id="ModalTwo" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content card-style warning-card">
                         <div class="modal-header px-0 border-0 d-flex justify-content-end ">
@@ -93,31 +94,27 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <form wire:submit.prevent="store" enctype="multipart/form-data" >
+                                <form id="form-upload" wire:submit.prevent="store" enctype="multipart/form-data" >
                                 <div class="input-style-1">
                                     <label>Objet</label>
-                                    <input type="text" wire:model="object" placeholder="objet" />
+                                    <input type="text" wire:model.defer="object" placeholder="objet" />
                                     @error('object') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="input-style-1">
                                     <label>Message</label>
-                                    <input type="text" wire:model="message" placeholder="votre message" />
+                                    <input type="text" wire:model.defer="message" placeholder="votre message" />
                                     @error('message') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="input-style-1">
                                     <label>Piece jointe</label>
-                                    <input class="form-control" type="file" wire:model="path" placeholder="piece jointe" />
+                                    <input class="form-control" type="file" name="path" wire:model.defer="path" placeholder="piece jointe" />
                                    
                                 </div>
                                 <div class="text-center">
-                                        <button class="main-btn danger-btn-outline rounded-md btn-hover" data-bs-dismiss="modal"
-                                                wire:click="cancel">Annuler
-                                        </button>
-                                        <button class="main-btn active-btn-outline rounded-md btn-hover"
-                                                type="submit">Enregistrer
-                                        </button>
+                                    <button class="main-btn active-btn-outline rounded-md btn-hover"
+                                            type="submit">Enregistrer
+                                    </button>
                                 </div>
-                                </form>
                             </div>
                         </div>
                     </div>

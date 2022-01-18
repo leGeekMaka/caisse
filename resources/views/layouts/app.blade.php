@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
     @livewireStyles
-    stack('styles')
+    @stack('styles')
   </head>
   <body>
     <!-- ======== sidebar-nav start =========== -->
@@ -107,6 +107,7 @@
     </main>
     <!-- ======== main-wrapper end =========== -->
     @livewireScripts
+    @stack('scripts')
     <!-- ========= All Javascript files linkup ======== -->
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/Chart.min.js"></script>
@@ -117,6 +118,5 @@
     <script src="assets/js/world-merc.js"></script>
     <script src="assets/js/polyfill.js"></script>
     <script src="assets/js/main.js"></script>
-    stack('scripts')
   </body>
 </html>

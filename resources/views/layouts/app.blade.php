@@ -80,7 +80,7 @@
                     rel="nofollow"
                     target="_blank"
                   >
-                    PlainAdmin
+                   GOBE
                   </a>
                 </p>
               </div>

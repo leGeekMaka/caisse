@@ -28,3 +28,6 @@ Route::get('/control', function(){
 Route::get('/direction', function(){
     return view('direction');
 });
+Route::get('/cashier', function(){
+    return view('cashier');
+});

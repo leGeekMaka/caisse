@@ -54,7 +54,7 @@
               <span class="text">Contrôle de Gestion  </span>
             </a>
           </li>
-          <li class="nav-item {{ request()->is('direction') ? 'active' : '' }} ">
+          <li class="nav-item {{ request()->is('direction') ? 'active' : '' }}">
             <a href="{{url('direction')}}">
               <span class="icon">
                 <svg
@@ -72,8 +72,8 @@
               <span class="text">Direction</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="caisse.html">
+          <li class="nav-item {{ request()->is('cashier') ? 'active' : '' }}">
+            <a href="{{url('cashier')}}">
               <span class="icon">
                 <svg
                   width="22"

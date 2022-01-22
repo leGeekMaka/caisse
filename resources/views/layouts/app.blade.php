@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/fullcalendar.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+      <link rel="stylesheet" href="assets/css/fancybox.min.css" />
     @livewireStyles
     @stack('styles')
   </head>
@@ -118,5 +119,7 @@
     <script src="assets/js/world-merc.js"></script>
     <script src="assets/js/polyfill.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/fancybox.min.js"></script>
   </body>
 </html>

@@ -10,7 +10,7 @@ use Livewire\WithFileUploads;
 class Employer extends Component
 {
     use WithFileUploads;
-    public $object, $message, $status, $path, $fileName,$employeId,$edit = "false", $token;
+    public $object, $amount, $status, $path, $fileName,$employeId,$edit = "false", $token;
     public function render()
     {
         return view('livewire.employer.employer', [
@@ -22,7 +22,7 @@ class Employer extends Component
 
     public $rules = [
         'object' => 'required',
-        'message' => 'required',
+        'amount' => 'required',
     ];
     public function store(){
 
@@ -30,13 +30,13 @@ class Employer extends Component
         try{
             ModelsEmployer::create([
                 'object' => $this->object,
-                'message' => $this->message,
+                'amount' => $this->amount,
                 'path' => $this->path ? $this->path->store('attach', 'public') : '',
                 'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0] : '', // explode renvoi un tableau et j'affiche la premier élement du tableau
                 'status' => config('status.pending'), //
             ]);
 
-            $this->reset('object','message','path','fileName');
+            $this->reset('object','amount','path','fileName');
             $this->emit('closeModal');
             $this->dispatchBrowserEvent('closeAlert');
             session()->flash('message', 'Démande enregistreé avec succès.');
@@ -57,7 +57,7 @@ class Employer extends Component
         $this->edit = "true";
         $employe = ModelsEmployer::find($operationId);
         $this->object = $employe->object;
-        $this->message = $employe->message;
+        $this->amount = $employe->amount;
         $this->fileName = $employe->fileName;
         $this->employeId = $employe->id;
     }
@@ -67,7 +67,7 @@ class Employer extends Component
         try{
             ModelsEmployer::find($this->employeId)->update([
                 'object' => $this->object,
-                'message' => $this->message,
+                'amount' => $this->amount,
                 'path' => $this->path ? $this->path->store('attach', 'public') : '',
                 'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0]: '',
             ]);
@@ -127,7 +127,7 @@ class Employer extends Component
     }
     public function cancel(){
         $this->object = "";
-        $this->message = "";
+        $this->amount = "";
         $this->resetErrorBag();
         $this->token = "";
     }

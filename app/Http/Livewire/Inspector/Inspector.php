@@ -9,7 +9,7 @@ class Inspector extends Component
 {
     public
         $object,
-        $message,
+        $amount,
         $path,
         $control,
         $employeId,
@@ -31,7 +31,7 @@ class Inspector extends Component
         $employer = Employer::where('id', $idEmploye)->first();
         $this->name = "true";
         $this->object = $employer->object;
-        $this->message = $employer->message;
+        $this->amount = $employer->amount;
         $this->control = $employer->control;
         $this->path = $employer->path;
         $this->fileName = $employer->fileName;
@@ -51,7 +51,7 @@ class Inspector extends Component
     }
 
     public function cancel(){
-        $this->reset('object','message','path','employeId');
+        $this->reset('object','amount','path','employeId');
         $this->name = "false";
     }
 }

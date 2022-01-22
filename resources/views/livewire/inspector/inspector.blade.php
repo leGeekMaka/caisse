@@ -23,7 +23,7 @@
                                 <th></th>
                                 <th><h6>Nom Employé</h6></th>
                                 <th><h6>Objet</h6></th>
-                                <th><h6>Message</h6></th>
+                                <th><h6>Montant</h6></th>
                                 <th><h6>pièce jointe</h6></th>
                                 <th><h6>Motif</h6></th>
                                 <th><h6>statut</h6></th>
@@ -52,7 +52,21 @@
                                         <p>{{ $inspector->message }}</p>
                                     </td>
                                     <td>
-                                        <p> RAS </p>
+                                        <div class="more-btn-wrapper">
+                                            <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                <i class="text-muted lni lni-more-alt" > afficher</i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                <li class="dropdown-item">
+                                                    <a
+                                                            data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                            data-src="{{ asset('storage/'. $inspector->path) }}"
+                                                            href="javascript:void(0)" class="text-gray">{{  $inspector->fileName }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </td>
                                     <td>
                                         <p> <span> {{ $inspector->reason }} </span> </p>
@@ -106,11 +120,11 @@
 
                                 <div class="input-style-1">
                                     <label>Objet</label>
-                                    <input type="text" disabled wire:model="object" placeholder="objet" />
+                                    <input type="text" disabled wire:model="object" />
                                 </div>
                                 <div class="input-style-1">
-                                    <label>Message</label>
-                                    <input type="text" disabled wire:model="message" placeholder="votre message" />
+                                    <label>Montant</label>
+                                    <input type="text" disabled wire:model="amount" />
                                 </div>
                                 <div class="input-style-1">
                                     <label>Piece jointe</label>

@@ -23,7 +23,7 @@
                                 <th></th>
                                 <th><h6>Nom Employé</h6></th>
                                 <th><h6>Objet</h6></th>
-                                <th><h6>Message</h6></th>
+                                <th><h6>Montant</h6></th>
                                 <th><h6>pièce jointe</h6></th>
                                 <th><h6>Motif</h6></th>
                                 <th><h6>statut</h6></th>
@@ -52,7 +52,22 @@
                                         <p>{{ $direction->message }}</p>
                                     </td>
                                     <td>
-                                        <p> RAS </p>
+                                        {{ $direction->fileName }}
+                                        <div class="more-btn-wrapper">
+                                            <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                <i class="text-muted lni lni-more-alt" > afficher</i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                <li class="dropdown-item">
+                                                    <a
+                                                            data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                            data-src="{{ asset('storage/'.$direction->path) }}"
+                                                            href="javascript:void(0)" class="text-gray">{{ $direction->fileName }}
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </td>
                                     <td>
                                         <p> <span> {{ $direction->reason }} </span> </p>
@@ -107,17 +122,14 @@
                                 <div class="input-style-1">
                                     <label>Objet</label>
                                     <input type="text" disabled wire:model="object" placeholder="objet" />
-                                    @error('object') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="input-style-1">
                                     <label>Message</label>
-                                    <input type="text" disabled wire:model="message" placeholder="votre message" />
-                                    @error('message') <span class="text-danger">{{ $message }}</span> @enderror
+                                    <input type="text" disabled wire:model="amount" placeholder="votre message" />
                                 </div>
                                 <div class="input-style-1">
                                     <label>Piece jointe</label>
-                                    <input class="form-control" disabled type="file" wire:model="path" placeholder="piece jointe" />
-
+                                    <input class="form-control" disabled type="file" wire:model="path" />
                                 </div>
                                 <div class="input-style-1">
                                     <label>motif du refus</label>

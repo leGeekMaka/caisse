@@ -11,7 +11,7 @@ class Direction extends Component
 {
     public
         $object,
-        $message,
+        $amount,
         $path,
         $reason,
         $direction,
@@ -34,7 +34,7 @@ class Direction extends Component
         $employer = Employer::where('id', $idEmploye)->first();
 
         $this->object = $employer->object;
-        $this->message = $employer->message;
+        $this->amount = $employer->amount;
         $this->direction = $employer->direction;
         $this->path = $employer->path;
         $this->reason = $employer->reason;
@@ -72,6 +72,6 @@ class Direction extends Component
     }
 
     public function cancel(){
-        $this->reset('object','message','path','employeId','reason');
+        $this->reset('object','amount','path','employeId','reason');
     }
 }

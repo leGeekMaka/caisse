@@ -9,7 +9,7 @@ class Responsible extends Component
 {
     public
           $object,
-          $message,
+          $amount,
           $path,
           $reason,
           $responsible,
@@ -32,7 +32,7 @@ class Responsible extends Component
         $employer = Employer::where('id', $idEmploye)->first();
 
         $this->object = $employer->object;
-        $this->message = $employer->message;
+        $this->amount = $employer->amount;
         $this->reason = $employer->reason;
         $this->status = $employer->status;
         $this->responsible = $employer->responsible;
@@ -51,7 +51,7 @@ class Responsible extends Component
                 'status' => "refuse",
             ]);
 
-            $this->reset('object','message','reason','responsible','path','status','employeId');
+            $this->reset('object','amount','reason','responsible','path','status','employeId');
             $this->emit('closeModal');
             $this->dispatchBrowserEvent('closeAlert');
             session()->flash('message', 'Démande enregistreé avec succès.');
@@ -65,7 +65,7 @@ class Responsible extends Component
                 'responsible' => $this->responsible,
             ]);
 
-            $this->reset('object','message','reason','responsible','path','status','employeId');
+            $this->reset('object','amount','reason','responsible','path','status','employeId');
             $this->emit('closeModal');
             $this->dispatchBrowserEvent('closeAlert');
             session()->flash('message', 'Démande enregistreé avec succès.');
@@ -82,7 +82,7 @@ class Responsible extends Component
     }
 
     public function cancel(){
-        $this->reset('object','message','reason','responsible','path','status','employeId');
+        $this->reset('object','amount','reason','responsible','path','status','employeId');
 
     }
 }

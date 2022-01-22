@@ -26,7 +26,7 @@
                       <tr>
                         <th></th>
                         <th><h6>Objet</h6></th>
-                        <th><h6>Message</h6></th>
+                        <th><h6>Montant</h6></th>
                         <th><h6>pièce jointe</h6></th>
                         <th><h6>statut</h6></th>
                         <th><h6>Date</h6></th>
@@ -47,13 +47,10 @@
                             <p>{{ $employer->object }} </p>
                           </td>
                           <td>
-                            <p>{{ $employer->message }}</p>
+                            <p>{{ $employer->amount }}</p>
                           </td>
                           <td>
                              {{ $employer->fileName }}
-                              ok
-                              test
-                              voila
                               <div class="more-btn-wrapper">
                                   <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
                                           aria-expanded="false">
@@ -136,9 +133,9 @@
                                     @error('object') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="input-style-1">
-                                    <label>Message</label>
-                                    <input type="text" wire:model.defer="message" placeholder="votre message" />
-                                    @error('message') <span class="text-danger">{{ $message }}</span> @enderror
+                                    <label>Montant</label>
+                                    <input type="text" wire:model.defer="amount" placeholder="montant" />
+                                    @error('amount') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="input-style-1">
                                     <label>Piece jointe</label>
@@ -226,8 +223,7 @@
     </div>
 </div>
 @push('scripts')
-    <script src="assets/js/jquery-3.2.1.min.js"></script>
-    <script src="assets/js/fancybox.min.js"></script>
+
 <script>
         Livewire.on('closeModal', () => {
             let myModalEl = document.getElementById('ModalTwo');

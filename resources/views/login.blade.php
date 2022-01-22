@@ -25,6 +25,12 @@
     <div class="container-fluid">
         <div class="row g-0 auth-row">
             <div class="col-lg-6">
+                @if(session()->has('message'))
+                    <div id="alert-message" class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{session('message')}} </strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="auth-cover-wrapper bg-primary-100">
                     <div class="auth-cover">
                         <div class="title text-center">
@@ -50,30 +56,33 @@
                         <p class="text-sm mb-25">
                             Commencez à créer la meilleure expérience utilisateur possible pour vos clients.
                         </p>
-                        <form>
+                        <form method="POST" action="{{route('login')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-12">
                                     <div class="input-style-1">
-                                        <label>Email</label>
-                                        <input type="email" placeholder="Email" />
+                                        <label>Nom</label>
+                                        <input type="email" name="email" placeholder="email" />
+                                    @error('email') <span class="text-danger">{{$message}}</span>  @enderror
                                     </div>
                                 </div>
                                 <!-- end col -->
                                 <div class="col-12">
                                     <div class="input-style-1">
                                         <label>mot de passe</label>
-                                        <input type="password" placeholder="mot de passe" />
+                                        <input type="password" name="password" placeholder="mot de passe" />
+                                        @error('password') <span class="text-danger" >{{$message}}</span> @enderror
                                     </div>
                                 </div>
                                 <!-- end col -->
-                                <div class="col-xxl-6 col-lg-12 col-md-6">
-                                    <div class="form-check checkbox-style mb-30">
-                                        <input class="form-check-input" type="checkbox" value=""
-                                            id="checkbox-remember" />
-                                        <label class="form-check-label" for="checkbox-remember">
-                                            Ce rappeler de moi</label>
-                                    </div>
-                                </div>
+{{--                                <div class="col-xxl-6 col-lg-12 col-md-6">--}}
+{{--                                    <div class="form-check checkbox-style mb-30">--}}
+{{--                                        <input class="form-check-input" type="checkbox" value=""--}}
+{{--                                            id="checkbox-remember" />--}}
+{{--                                        <label class="form-check-label" for="checkbox-remember">--}}
+{{--                                            Ce rappeler de moi</label>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 <!-- end col -->
                                 <div class="col-xxl-6 col-lg-12 col-md-6">
                                     <div class="text-start text-md-end 
@@ -86,14 +95,13 @@
                                 <!-- end col -->
                                 <div class="col-12">
                                     <div class="button-group d-flex justify-content-center flex-wrap">
-                                        <a class=" main-btn primary-btn btn-hover w-100 text-center" href="index.html">
+                                        <button type="submit" class=" main-btn primary-btn btn-hover w-100 text-center">
                                             Se connecter
-                                        </a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <!-- end row -->
-                        </>
+                        </form>
                     </div>
                 </div>
             </div>

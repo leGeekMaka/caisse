@@ -81,7 +81,7 @@
                     rel="nofollow"
                     target="_blank"
                   >
-                   GOBE
+                   ox
                   </a>
                 </p>
               </div>

@@ -28,7 +28,7 @@
                   >
                     <div class="profile-info">
                       <div class="info">
-                        <h6>Alex GOBE</h6>
+                        <h6> {{Auth::user()->name}} </h6>
                         <div class="image">
                           <img
                             src="assets/images/profile/profile-image.png"

@@ -31,7 +31,7 @@ class Employer extends Component
             ModelsEmployer::create([
                 'object' => $this->object,
                 'message' => $this->message,
-                'path' => $this->path ? $this->path->store('attach') : '',
+                'path' => $this->path ? $this->path->store('attach', 'public') : '',
                 'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0] : '', // explode renvoi un tableau et j'affiche la premier élement du tableau
                 'status' => config('status.pending'), //
             ]);
@@ -68,7 +68,7 @@ class Employer extends Component
             ModelsEmployer::find($this->employeId)->update([
                 'object' => $this->object,
                 'message' => $this->message,
-                'path' => $this->path ? $this->path->store('attach') : '',
+                'path' => $this->path ? $this->path->store('attach', 'public') : '',
                 'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0]: '',
             ]);
             $this->edit = "false";
@@ -119,6 +119,11 @@ class Employer extends Component
     public function getToken($employeId){
         $employe = ModelsEmployer::find($employeId);
         $this->token = $employe->token;
+    }
+
+    public function previewPdf($id){
+        $employe = ModelsEmployer::where('id',$id)->first();
+        return response()->file();
     }
     public function cancel(){
         $this->object = "";

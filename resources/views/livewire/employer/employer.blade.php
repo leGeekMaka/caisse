@@ -50,7 +50,26 @@
                             <p>{{ $employer->message }}</p>
                           </td>
                           <td>
-                            <p> {{ $employer->fileName }} </p>
+                             {{ $employer->fileName }}
+                              ok
+                              test
+                              voila
+                              <div class="more-btn-wrapper">
+                                  <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                          aria-expanded="false">
+                                     <i class="text-muted lni lni-more-alt" > afficher</i>
+                                  </button>
+                                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                      <li class="dropdown-item">
+                                          <a
+                                             data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                             data-src="{{ asset('storage/'.$employer->path) }}"
+                                             href="javascript:void(0)" class="text-gray">{{ $employer->fileName }}
+                                          </a>
+                                      </li>
+                                  </ul>
+                              </div>
+
                           </td>
                           <td>
                             <p>
@@ -207,6 +226,8 @@
     </div>
 </div>
 @push('scripts')
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/fancybox.min.js"></script>
 <script>
         Livewire.on('closeModal', () => {
             let myModalEl = document.getElementById('ModalTwo');

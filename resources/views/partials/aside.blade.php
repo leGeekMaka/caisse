@@ -6,6 +6,7 @@
       </div>
       <nav class="sidebar-nav">
         <ul>
+          @if(Auth::user()->role == "employe")
           <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
             <a href="{{url('home')}}" >
               <span class="icon">
@@ -18,6 +19,9 @@
               <span class="text">Accueil</span>
             </a>
           </li>
+          @endif
+
+            @if(Auth::user()->role == "responsible")
           <li class="nav-item {{ request()->is('responsible') ? 'active' : '' }}">
             <a href="{{url('responsible')}}">
               <span class="icon">
@@ -36,6 +40,9 @@
               <span class="text">Responsable employé</span>
             </a>
           </li>
+            @endif
+
+            @if(Auth::user()->role == "inspector")
           <li class="nav-item {{ request()->is('control') ? 'active' : '' }}">
             <a href="{{url('control')}}">
               <span class="icon">
@@ -54,6 +61,9 @@
               <span class="text">Contrôle de Gestion  </span>
             </a>
           </li>
+            @endif
+
+            @if(Auth::user()->role == "direction")
           <li class="nav-item {{ request()->is('direction') ? 'active' : '' }}">
             <a href="{{url('direction')}}">
               <span class="icon">
@@ -72,6 +82,9 @@
               <span class="text">Direction</span>
             </a>
           </li>
+              @endif
+
+            @if(Auth::user()->role == "cashier")
           <li class="nav-item {{ request()->is('cashier') ? 'active' : '' }}">
             <a href="{{url('cashier')}}">
               <span class="icon">
@@ -90,6 +103,8 @@
               <span class="text">Caissière</span>
             </a>
           </li>
+              @endif
+
         </ul>
       </nav>
     </aside>

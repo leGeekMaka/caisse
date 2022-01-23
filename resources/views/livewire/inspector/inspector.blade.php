@@ -17,18 +17,18 @@
                 <div class="col-lg-12">
                     <div class="tab-style-1 m-4">
                         <nav class="nav " id="nav-tab">
-                            <button class="active" id="tab-1-1" data-bs-toggle="tab" data-bs-target="#tabContent-1-1">
+                            <button wire:ignore class="active" id="tab-1-1" data-bs-toggle="tab" data-bs-target="#tabContent-1-1">
                                 En cours
                             </button>
-                            <button id="tab-1-2" data-bs-toggle="tab" data-bs-target="#tabContent-1-2">
+                            <button wire:ignore id="tab-1-2" data-bs-toggle="tab" data-bs-target="#tabContent-1-2">
                                 Refusé
                             </button>
-                            <button id="tab-1-3" data-bs-toggle="tab" data-bs-target="#tabContent-1-3">
+                            <button wire:ignore id="tab-1-3" data-bs-toggle="tab" data-bs-target="#tabContent-1-3">
                                 Accepté
                             </button>
                         </nav>
                         <div class="tab-content" id="nav-tabContent1">
-                            <div class="tab-pane fade show active" id="tabContent-1-1">
+                            <div wire:ignore.self class="tab-pane fade show active" id="tabContent-1-1">
                                 <div class="card-style mb-30">
                                     <h6 class="mb-10"></h6>
                                     <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
@@ -132,7 +132,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="tabContent-1-2">
+                            <div wire:ignore.self class="tab-pane fade" id="tabContent-1-2">
                                 <div class="card-style mb-30">
                                     <h6 class="mb-10"></h6>
                                     <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
@@ -236,7 +236,7 @@
                                 </div>
                             </div>
 
-                            <div class="tab-pane fade" id="tabContent-1-3">
+                            <div wire:ignore.self class="tab-pane fade" id="tabContent-1-3">
                                 <div class="card-style mb-30">
                                     <h6 class="mb-10"></h6>
                                     <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">

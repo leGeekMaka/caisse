@@ -23,9 +23,14 @@ class CreateEmployersTable extends Migration
             $table->string('responsible',20)->nullable();
             $table->string('control',20)->nullable();
             $table->string('direction',20)->nullable();
+            $table->string('cashier',20)->nullable();
             $table->text('reason')->nullable();
             $table->text('token')->nullable();
             $table->string('isPaid',5)->nullable();
+            $table->unsignedBigInteger('user_id')->index();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

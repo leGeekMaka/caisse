@@ -59,7 +59,7 @@
                                                         <h6 class="text-sm">{{ $i++ }}</h6>
                                                     </td>
                                                     <td>
-                                                        <p> Alex GOBE </p>
+                                                        <p> {{$direction->user->name}} </p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $direction->object }} </p>
@@ -158,7 +158,7 @@
                                                         <h6 class="text-sm">{{ $i++ }}</h6>
                                                     </td>
                                                     <td>
-                                                        <p> Alex GOBE </p>
+                                                        <p> {{$direction->user->name}} </p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $direction->object }} </p>
@@ -257,12 +257,11 @@
                                                         <h6 class="text-sm">{{ $i++ }}</h6>
                                                     </td>
                                                     <td>
-                                                        <p> Alex GOBE </p>
+                                                        <p> {{$direction->user->name}} </p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $direction->object }} </p>
                                                     </td>
-
                                                     <td>
                                                         <p>{{ $direction->message }}</p>
                                                     </td>
@@ -304,12 +303,6 @@
                                                                     data-bs-toggle="modal" data-bs-target="#ModalTwo">
                                                                 <i class="lni lni-eye"></i>
                                                             </button>
-                                                            {{--                                            <button class="edit" data-bs-toggle="modal">--}}
-                                                            {{--                                                <i class="lni lni-pencil"></i>--}}
-                                                            {{--                                            </button>--}}
-                                                            {{--                                            <button class="text-danger" data-bs-toggle="modal">--}}
-                                                            {{--                                                <i class="lni lni-trash-can"></i>--}}
-                                                            {{--                                            </button>--}}
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -327,10 +320,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-
         </div>
 
         <div class="warning-modal">

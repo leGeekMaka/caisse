@@ -36,6 +36,7 @@ class Employer extends Component
                 'path' => $this->path ? $this->path->store('attach', 'public') : '',
                 'fileName' => $this->path ? explode('.', $this->path->getClientOriginalName())[0] : '', // explode renvoi un tableau et j'affiche la premier élement du tableau
                 'status' => config('status.pending'), //
+                'user_id' => auth()->user()->id
             ]);
 
             $this->reset('object','amount','path','fileName');

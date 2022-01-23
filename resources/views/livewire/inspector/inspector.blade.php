@@ -59,7 +59,7 @@
                                                         <h6 class="text-sm">{{ $i++ }}</h6>
                                                     </td>
                                                     <td>
-                                                        <p> Alex GOBE </p>
+                                                        <p> {{$inspector->user->name}} </p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $inspector->object }} </p>
@@ -163,7 +163,7 @@
                                                         <h6 class="text-sm">{{ $i++ }}</h6>
                                                     </td>
                                                     <td>
-                                                        <p> Alex GOBE </p>
+                                                        <p> {{$inspector->user->name}} </p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $inspector->object }} </p>
@@ -268,7 +268,7 @@
                                                         <h6 class="text-sm">{{ $i++ }}</h6>
                                                     </td>
                                                     <td>
-                                                        <p> Alex GOBE </p>
+                                                        <p> {{$inspector->user->name}} </p>
                                                     </td>
                                                     <td>
                                                         <p>{{ $inspector->object }} </p>
@@ -314,12 +314,6 @@
                                                                     data-bs-toggle="modal" data-bs-target="#ModalTwo">
                                                                 <i class="lni lni-eye"></i>
                                                             </button>
-                                                            {{--                                            <button class="edit" data-bs-toggle="modal">--}}
-                                                            {{--                                                <i class="lni lni-pencil"></i>--}}
-                                                            {{--                                            </button>--}}
-                                                            {{--                                            <button class="text-danger" data-bs-toggle="modal">--}}
-                                                            {{--                                                <i class="lni lni-trash-can"></i>--}}
-                                                            {{--                                            </button>--}}
                                                         </div>
                                                     </td>
                                                 </tr>

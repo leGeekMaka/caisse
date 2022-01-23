@@ -57,7 +57,7 @@
                                                             <h6 class="text-sm">{{ $i++ }}</h6>
                                                         </td>
                                                         <td>
-                                                            <p> Alex GOBE </p>
+                                                            <p> {{$responsible->user->name}} </p>
                                                         </td>
                                                         <td>
                                                             <p>{{ $responsible->object }} </p>
@@ -147,7 +147,7 @@
                                                             <h6 class="text-sm">{{ $i++ }}</h6>
                                                         </td>
                                                         <td>
-                                                            <p> Alex GOBE </p>
+                                                            <p> {{$responsible->user->name}} </p>
                                                         </td>
                                                         <td>
                                                             <p>{{ $responsible->object }} </p>
@@ -239,7 +239,7 @@
                                                             <h6 class="text-sm">{{ $i++ }}</h6>
                                                         </td>
                                                         <td>
-                                                            <p> Alex GOBE </p>
+                                                            <p> {{$responsible->user->name}} </p>
                                                         </td>
                                                         <td>
                                                             <p>{{ $responsible->object }} </p>

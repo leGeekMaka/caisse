@@ -13,101 +13,300 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-{{--            <div class="col-lg-4">--}}
-{{--                <button  type="button" class="main-btn btn-sm primary-btn btn-hover mb-2"--}}
-{{--                         data-bs-toggle="modal" data-bs-target="#ModalTwo"><i class="lni lni-plus me-2"></i> Faire une démande--}}
-{{--                </button>--}}
-{{--            </div>--}}
-            <div class="col-lg-12">
-                <div class="card-style mb-30">
-                    <h6 class="mb-10">Mes demandes en cours</h6>
-                    <div class="table-wrapper table-responsive">
-                        <table class="table striped-table">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th><h6>Nom Employé</h6></th>
-                                <th><h6>Objet</h6></th>
-                                <th><h6>Montant</h6></th>
-                                <th><h6>pièce jointe</h6></th>
-                                <th><h6>Motif</h6></th>
-                                <th><h6>statut</h6></th>
-                                <th><h6>Date</h6></th>
-                                <th><h6>Actions</h6></th>
-                            </tr>
-                            <!-- end table row-->
-                            </thead>
-                            <tbody>
-                            @php
-                                $i = 1
-                            @endphp
-                            @forelse ($responsibles as $responsible )
-                                <tr>
-                                    <td>
-                                        <h6 class="text-sm">{{ $i++ }}</h6>
-                                    </td>
-                                    <td>
-                                        <p> Alex GOBE </p>
-                                    </td>
-                                    <td>
-                                        <p>{{ $responsible->object }} </p>
-                                    </td>
-
-                                    <td>
-                                        <p>{{ $responsible->amount }}</p>
-                                    </td>
-                                    <td>
-                                        <div class="more-btn-wrapper">
-                                            <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
-                                                    aria-expanded="false">
-                                               <span class="text-muted" >voir pj</span>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
-                                                <li class="dropdown-item">
-                                                    <a
-                                                            data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
-                                                            data-src="{{ asset('storage/'.$responsible->path) }}"
-                                                            href="javascript:void(0)" class="text-gray">{{ $responsible->fileName }}
-                                                    </a>
-                                                </li>
-                                            </ul>
+                    <div class="col-lg-12">
+                        <div class="tab-style-1 m-4">
+                            <nav class="nav " id="nav-tab">
+                                <button class="active" id="tab-1-1" data-bs-toggle="tab" data-bs-target="#tabContent-1-1">
+                                    En cours
+                                </button>
+                                <button id="tab-1-2" data-bs-toggle="tab" data-bs-target="#tabContent-1-2">
+                                    Refusé
+                                </button>
+                                <button id="tab-1-3" data-bs-toggle="tab" data-bs-target="#tabContent-1-3">
+                                    Accepté
+                                </button>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent1">
+                                <div class="tab-pane fade show active" id="tabContent-1-1">
+                                    <div class="card-style mb-30">
+                                        <h6 class="mb-10"></h6>
+                                        <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
                                         </div>
-                                    </td>
-                                    <td>
-                                        <p> <span> {{ $responsible->reason }} </span> </p>
-                                    </td>
-                                    <td>
-                                        <p> <span class="status-btn close-btn"> {{ $responsible->status }} </span> </p>
-                                    </td>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table striped-table">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th><h6>Nom Employé</h6></th>
+                                                    <th><h6>Objet</h6></th>
+                                                    <th><h6>Montant</h6></th>
+                                                    <th><h6>pièce jointe</h6></th>
+                                                    <th><h6>statut</h6></th>
+                                                    <th><h6>Date</h6></th>
+                                                    <th><h6>Actions</h6></th>
+                                                </tr>
+                                                <!-- end table row-->
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @forelse ($responsibles as $responsible )
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-sm">{{ $i++ }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <p> Alex GOBE </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $responsible->object }} </p>
+                                                        </td>
 
-                                    <td>
-                                        <p>{{$responsible->created_at}}</p>
-                                    </td>
-                                    <td>
-                                        <div class="action">
-                                            <button wire:click="display({{$responsible->id}})" class="edit"
-                                                    data-bs-toggle="modal" data-bs-target="#ModalTwo">
-                                                <i class="lni lni-eye"></i>
-                                            </button>
-{{--                                            <button wire:click="edit({{$responsible->id}})" class="edit"--}}
-{{--                                                    data-bs-toggle="modal" data-bs-target="#ModalTwo">--}}
-{{--                                                <i class="lni lni-pencil"></i>--}}
-{{--                                            </button>--}}
+                                                        <td>
+                                                            <p>{{ $responsible->amount }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="more-btn-wrapper">
+                                                                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                    <span class="text-muted" >voir pj</span>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                                    <li class="dropdown-item">
+                                                                        <a
+                                                                            data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                                            data-src="{{ asset('storage/'.$responsible->path) }}"
+                                                                            href="javascript:void(0)" class="text-gray">{{ $responsible->fileName }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @if($responsible->status === "pending")
+                                                                    <span class="status-btn close-btn"> En attente </span>
+                                                                @endif
+
+                                                            </p>
+                                                        </td>
+
+                                                        <td>
+                                                            <p>{{$responsible->created_at}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <button wire:click="display({{$responsible->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTwo">
+                                                                    <i class="lni lni-eye"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                @empty
+                                                    Vous n'avez emis aucune demande
+                                                @endforelse
+                                                <!-- end table row -->
+                                                </tbody>
+                                            </table>
+                                            <!-- end table -->
                                         </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
 
-                            @empty
-                                Vous n'avez emis aucune demande
-                            @endforelse
-                            <!-- end table row -->
-                            </tbody>
-                        </table>
-                        <!-- end table -->
+                                <div class="tab-pane fade" id="tabContent-1-2">
+                                    <div class="card-style mb-30">
+                                        <h6 class="mb-10"></h6>
+                                        <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
+                                        </div>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table striped-table">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th><h6>Nom Employé</h6></th>
+                                                    <th><h6>Objet</h6></th>
+                                                    <th><h6>Montant</h6></th>
+                                                    <th><h6>pièce jointe</h6></th>
+                                                    <th><h6>Motif</h6></th>
+                                                    <th><h6>statut</h6></th>
+                                                    <th><h6>Date</h6></th>
+                                                    <th><h6>Actions</h6></th>
+                                                </tr>
+                                                <!-- end table row-->
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @forelse ($refusedManager as $responsible )
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-sm">{{ $i++ }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <p> Alex GOBE </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $responsible->object }} </p>
+                                                        </td>
+
+                                                        <td>
+                                                            <p>{{ $responsible->amount }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="more-btn-wrapper">
+                                                                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                    <span class="text-muted" >voir pj</span>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                                    <li class="dropdown-item">
+                                                                        <a
+                                                                                data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                                                data-src="{{ asset('storage/'.$responsible->path) }}"
+                                                                                href="javascript:void(0)" class="text-gray">{{ $responsible->fileName }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p> <span> {{ $responsible->reason }} </span> </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @if($responsible->responsible === "refuse")
+                                                                    <span class="status-btn close-btn"> Refusé </span>
+                                                                @endif
+                                                            </p>
+                                                        </td>
+
+                                                        <td>
+                                                            <p>{{$responsible->created_at}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <button wire:click="display({{$responsible->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTwo">
+                                                                    <i class="lni lni-eye"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                @empty
+                                                    Vous n'avez emis aucune demande
+                                                @endforelse
+                                                <!-- end table row -->
+                                                </tbody>
+                                            </table>
+                                            <!-- end table -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tabContent-1-3">
+                                    <div class="card-style mb-30">
+                                        <h6 class="mb-10"></h6>
+                                        <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
+                                        </div>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table striped-table">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th><h6>Nom Employé</h6></th>
+                                                    <th><h6>Objet</h6></th>
+                                                    <th><h6>Montant</h6></th>
+                                                    <th><h6>pièce jointe</h6></th>
+                                                    <th><h6>Motif</h6></th>
+                                                    <th><h6>statut</h6></th>
+                                                    <th><h6>Date</h6></th>
+                                                    <th><h6>Actions</h6></th>
+                                                </tr>
+                                                <!-- end table row-->
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @forelse ($validatedManagers as $responsible )
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-sm">{{ $i++ }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <p> Alex GOBE </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $responsible->object }} </p>
+                                                        </td>
+
+                                                        <td>
+                                                            <p>{{ $responsible->amount }}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="more-btn-wrapper">
+                                                                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                    <span class="text-muted" >voir pj</span>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                                    <li class="dropdown-item">
+                                                                        <a
+                                                                                data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                                                data-src="{{ asset('storage/'.$responsible->path) }}"
+                                                                                href="javascript:void(0)" class="text-gray">{{ $responsible->fileName }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <p> <span> {{ $responsible->reason }} </span> </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @if($responsible->responsible === "validate")
+                                                                    <span class="status-btn success-btn"> accepté </span>
+                                                                @endif
+                                                            </p>
+                                                        </td>
+
+                                                        <td>
+                                                            <p>{{$responsible->created_at}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <button wire:click="display({{$responsible->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTwo">
+                                                                    <i class="lni lni-eye"></i>
+                                                                </button>
+                                                                {{--                                            <button wire:click="edit({{$responsible->id}})" class="edit"--}}
+                                                                {{--                                                    data-bs-toggle="modal" data-bs-target="#ModalTwo">--}}
+                                                                {{--                                                <i class="lni lni-pencil"></i>--}}
+                                                                {{--                                            </button>--}}
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                @empty
+                                                    Vous n'avez emis aucune demande
+                                                @endforelse
+                                                <!-- end table row -->
+                                                </tbody>
+                                            </table>
+                                            <!-- end table -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <!-- end card -->
-            </div>
+
         </div>
 
         <div class="warning-modal">
@@ -132,6 +331,9 @@
                                     @error('amount') <span class="text-danger">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="input-style-1">
+                                    @if($edit === "true")
+                                        <p> nom du fichier : {{$fileName}}</p>
+                                    @endif
                                     <label>Piece jointe</label>
                                     <input class="form-control" disabled type="file" wire:model="path" placeholder="piece jointe" />
 

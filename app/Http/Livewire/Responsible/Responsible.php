@@ -15,7 +15,8 @@ class Responsible extends Component
           $responsible,
           $status,
           $employeId,
-          $edit = "false"
+          $edit = "false",
+          $fileName
           ;
 
     public function render()
@@ -24,11 +25,16 @@ class Responsible extends Component
             'responsibles' => Employer::where('status',config('status.pending'))
                                         ->where('responsible',null)
                                         ->get(),
+            'validatedManagers' => Employer::where('responsible',"validate")
+                                        ->get(),
+            'refusedManager' => Employer::where('responsible',"refuse")
+                                        ->get(),
         ]);
     }
 
     public function display($idEmploye){
 
+        $this->edit = "true";
         $employer = Employer::where('id', $idEmploye)->first();
 
         $this->object = $employer->object;
@@ -37,12 +43,14 @@ class Responsible extends Component
         $this->status = $employer->status;
         $this->responsible = $employer->responsible;
         $this->path = $employer->path;
+        $this->fileName = $employer->fileName;
         $this->employeId = $employer->id;
 
     }
 
     public function update(){
 
+        $this->edit = "false";
         if ($this->responsible === "refuse")
         {
             Employer::find($this->employeId)->update([
@@ -83,6 +91,7 @@ class Responsible extends Component
 
     public function cancel(){
         $this->reset('object','amount','reason','responsible','path','status','employeId');
+        $this->edit = "false";
 
     }
 }

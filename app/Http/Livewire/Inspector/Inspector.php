@@ -22,7 +22,15 @@ class Inspector extends Component
             'inspectors' => Employer::where('status',config('status.pending'))
                                       ->where('responsible','<>',null)
                                       ->where('control',null)
-                                      ->get()
+                                      ->get(),
+             'validatedControls' => Employer::where('responsible','<>',null)
+                                      ->where('control','<>',null)
+                                      ->get(),
+             'controlsRefused' => Employer::where('status',config('status.refuse'))
+                                      ->where('responsible','<>',null)
+                                      ->where('control','<>',null)
+                                      ->get(),
+
         ]);
     }
 

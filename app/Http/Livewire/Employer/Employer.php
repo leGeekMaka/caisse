@@ -14,7 +14,9 @@ class Employer extends Component
     public function render()
     {
         return view('livewire.employer.employer', [
-            'employers' => ModelsEmployer::orderByDesc('created_at')->get(),
+            'employers' => ModelsEmployer::where('status','pending')->get(),
+            'requestsRefused' => ModelsEmployer::where('status','refuse')->get(),
+            'validatedRequest' => ModelsEmployer::where('status','validate')->get(),
         ]);
     }
 

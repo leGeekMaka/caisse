@@ -18,100 +18,312 @@
               </button>
             </div>
             <div class="col-lg-12">
-              <div class="card-style mb-30">
-                <h6 class="mb-10">Mes demandes en cours</h6>
-                <div class="table-wrapper table-responsive">
-                  <table class="table striped-table">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th><h6>Objet</h6></th>
-                        <th><h6>Montant</h6></th>
-                        <th><h6>pièce jointe</h6></th>
-                        <th><h6>statut</h6></th>
-                        <th><h6>Date</h6></th>
-                        <th><h6>Actions</h6></th>
-                      </tr>
-                      <!-- end table row-->
-                    </thead>
-                    <tbody>
-                      @php
-                          $i = 1
-                      @endphp
-                        @forelse ($employers as $employer )
-                        <tr>
-                          <td>
-                            <h6 class="text-sm">{{ $i++ }}</h6>
-                          </td>
-                          <td>
-                            <p>{{ $employer->object }} </p>
-                          </td>
-                          <td>
-                            <p>{{ $employer->amount }}</p>
-                          </td>
-                          <td>
-                             {{ $employer->fileName }}
-                              <div class="more-btn-wrapper">
-                                  <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
-                                          aria-expanded="false">
-                                     <i class="text-muted lni lni-more-alt" > afficher</i>
-                                  </button>
-                                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
-                                      <li class="dropdown-item">
-                                          <a
-                                             data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
-                                             data-src="{{ asset('storage/'.$employer->path) }}"
-                                             href="javascript:void(0)" class="text-gray">{{ $employer->fileName }}
-                                          </a>
-                                      </li>
-                                  </ul>
-                              </div>
-
-                          </td>
-                          <td>
-                            <p>
-                                @if($employer->status === "pending")
-                                <span class="status-btn close-btn"> En attente </span>
-                                @endif
-                                @if($employer->status === "refuse")
-                                <span class="status-btn close-btn"> Refusé </span>
-                              @endif
-                              @if($employer->status === "validate")
-                                <span class="status-btn success-btn"> accepté </span>
-                              @endif
-                            </p>
-                          </td>
-                          <td>
-                            <p>{{$employer->created_at}}</p>
-                          </td>
-                          <td>
-                            <div class="action">
-                                <button wire:click="getToken({{$employer->id}})" class="edit"
-                                        data-bs-toggle="modal" data-bs-target="#Modalfour">
-                                    <i class="lni lni-eye"></i>
+                    <div class="col-lg-12">
+                        <div class="tab-style-1 m-4">
+                            <nav class="nav " id="nav-tab">
+                                <button class="active" id="tab-1-1" data-bs-toggle="tab" data-bs-target="#tabContent-1-1">
+                                    En cours
                                 </button>
-                              <button wire:click="edit({{$employer->id}})" class="edit"
-                                      data-bs-toggle="modal" data-bs-target="#ModalTwo" data-bs-toggle="modal">
-                                  <i class="lni lni-pencil"></i>
-                              </button>
-                              <button class="text-danger" wire:click="getId({{$employer->id}})"
-                                      data-bs-toggle="modal" data-bs-target="#ModalTree">
-                                  <i class="lni lni-trash-can"></i>
-                              </button>
-                           </div>
-                          </td>
-                        </tr>
-                            
-                        @empty
-                            Vous n'avez emis aucune demande
-                        @endforelse
-                      <!-- end table row -->
-                    </tbody>
-                  </table>
-                  <!-- end table -->
-                </div>
-              </div>
-              <!-- end card -->
+                                <button id="tab-1-2" data-bs-toggle="tab" data-bs-target="#tabContent-1-2">
+                                    Refusé
+                                </button>
+                                <button id="tab-1-3" data-bs-toggle="tab" data-bs-target="#tabContent-1-3">
+                                    Accepté
+                                </button>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent1">
+                                <div class="tab-pane fade show active" id="tabContent-1-1">
+                                    <div class="card-style mb-30">
+                                        <h6 class="mb-10"></h6>
+                                        <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
+                                        </div>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table striped-table">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th><h6>Objet</h6></th>
+                                                    <th><h6>Montant</h6></th>
+                                                    <th><h6>pièce jointe</h6></th>
+                                                    <th><h6>statut</h6></th>
+                                                    <th><h6>Date</h6></th>
+                                                    <th><h6>Actions</h6></th>
+                                                </tr>
+                                                <!-- end table row-->
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @forelse ($employers as $employer )
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-sm">{{ $i++ }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $employer->object }} </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $employer->amount }}</p>
+                                                        </td>
+                                                        <td>
+                                                            {{ $employer->fileName }}
+                                                            <div class="more-btn-wrapper">
+                                                                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                    <i class="text-muted lni lni-more-alt" > afficher</i>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                                    <li class="dropdown-item">
+                                                                        <a
+                                                                                data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                                                data-src="{{ asset('storage/'.$employer->path) }}"
+                                                                                href="javascript:void(0)" class="text-gray">{{ $employer->fileName }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @if($employer->status === "pending")
+                                                                    <span class="status-btn close-btn"> En attente </span>
+                                                                @endif
+                                                                @if($employer->status === "refuse")
+                                                                    <span class="status-btn close-btn"> Refusé </span>
+                                                                @endif
+                                                                @if($employer->status === "validate")
+                                                                    <span class="status-btn success-btn"> accepté </span>
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{$employer->created_at}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <button wire:click="getToken({{$employer->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#Modalfour">
+                                                                    <i class="lni lni-eye"></i>
+                                                                </button>
+                                                                <button wire:click="edit({{$employer->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTwo" data-bs-toggle="modal">
+                                                                    <i class="lni lni-pencil"></i>
+                                                                </button>
+                                                                <button class="text-danger" wire:click="getId({{$employer->id}})"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTree">
+                                                                    <i class="lni lni-trash-can"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                @empty
+                                                    Vous n'avez emis aucune demande
+                                                @endforelse
+                                                <!-- end table row -->
+                                                </tbody>
+                                            </table>
+                                            <!-- end table -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tabContent-1-2">
+                                    <div class="card-style mb-30">
+                                        <h6 class="mb-10"></h6>
+                                        <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
+                                        </div>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table striped-table">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th><h6>Objet</h6></th>
+                                                    <th><h6>Montant</h6></th>
+                                                    <th><h6>pièce jointe</h6></th>
+                                                    <th><h6>statut</h6></th>
+                                                    <th><h6>Motif</h6></th>
+                                                    <th><h6>Date</h6></th>
+                                                    <th><h6>Actions</h6></th>
+                                                </tr>
+                                                <!-- end table row-->
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @forelse ($requestsRefused as $employer )
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-sm">{{ $i++ }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $employer->object }} </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $employer->amount }}</p>
+                                                        </td>
+                                                        <td>
+                                                            {{ $employer->fileName }}
+                                                            <div class="more-btn-wrapper">
+                                                                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                    <i class="text-muted lni lni-more-alt" > afficher</i>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                                    <li class="dropdown-item">
+                                                                        <a
+                                                                                data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                                                data-src="{{ asset('storage/'.$employer->path) }}"
+                                                                                href="javascript:void(0)" class="text-gray">{{ $employer->fileName }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @if($employer->status === "pending")
+                                                                    <span class="status-btn close-btn"> En attente </span>
+                                                                @endif
+                                                                @if($employer->status === "refuse")
+                                                                    <span class="status-btn close-btn"> Refusé </span>
+                                                                @endif
+                                                                @if($employer->status === "validate")
+                                                                    <span class="status-btn success-btn"> accepté </span>
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{$employer->reason}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{$employer->created_at}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <button wire:click="getToken({{$employer->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#Modalfour">
+                                                                    <i class="lni lni-eye"></i>
+                                                                </button>
+                                                                <button wire:click="edit({{$employer->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTwo" data-bs-toggle="modal">
+                                                                    <i class="lni lni-pencil"></i>
+                                                                </button>
+                                                                <button class="text-danger" wire:click="getId({{$employer->id}})"
+                                                                        data-bs-toggle="modal" data-bs-target="#ModalTree">
+                                                                    <i class="lni lni-trash-can"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                @empty
+                                                    Vous n'avez emis aucune demande
+                                                @endforelse
+                                                <!-- end table row -->
+                                                </tbody>
+                                            </table>
+                                            <!-- end table -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="tabContent-1-3">
+                                    <div class="card-style mb-30">
+                                        <h6 class="mb-10"></h6>
+                                        <div class=" d-flex flex-wrap justify-content-between align-items-center py-3">
+                                        </div>
+                                        <div class="table-wrapper table-responsive">
+                                            <table class="table striped-table">
+                                                <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th><h6>Objet</h6></th>
+                                                    <th><h6>Montant</h6></th>
+                                                    <th><h6>pièce jointe</h6></th>
+                                                    <th><h6>statut</h6></th>
+                                                    <th><h6>Date</h6></th>
+                                                    <th><h6>Actions</h6></th>
+                                                </tr>
+                                                <!-- end table row-->
+                                                </thead>
+                                                <tbody>
+                                                @php
+                                                    $i = 1
+                                                @endphp
+                                                @forelse ($validatedRequest as $employer )
+                                                    <tr>
+                                                        <td>
+                                                            <h6 class="text-sm">{{ $i++ }}</h6>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $employer->object }} </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{ $employer->amount }}</p>
+                                                        </td>
+                                                        <td>
+                                                            {{ $employer->fileName }}
+                                                            <div class="more-btn-wrapper">
+                                                                <button class="more-btn dropdown-toggle" id="moreAction" data-bs-toggle="dropdown"
+                                                                        aria-expanded="false">
+                                                                    <i class="text-muted lni lni-more-alt" > afficher</i>
+                                                                </button>
+                                                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="moreAction">
+                                                                    <li class="dropdown-item">
+                                                                        <a
+                                                                                data-fancybox data-type="iframe" data-fancybox data-options='{"type" : "iframe", "iframe" : {"preload" : yess, "css" : {"width" : "600px"}}}'
+                                                                                data-src="{{ asset('storage/'.$employer->path) }}"
+                                                                                href="javascript:void(0)" class="text-gray">{{ $employer->fileName }}
+                                                                        </a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+
+                                                        </td>
+                                                        <td>
+                                                            <p>
+                                                                @if($employer->status === "pending")
+                                                                    <span class="status-btn close-btn"> En attente </span>
+                                                                @endif
+                                                                @if($employer->status === "refuse")
+                                                                    <span class="status-btn close-btn"> Refusé </span>
+                                                                @endif
+                                                                @if($employer->status === "validate")
+                                                                    <span class="status-btn success-btn"> accepté </span>
+                                                                @endif
+                                                            </p>
+                                                        </td>
+                                                        <td>
+                                                            <p>{{$employer->created_at}}</p>
+                                                        </td>
+                                                        <td>
+                                                            <div class="action">
+                                                                <button wire:click="getToken({{$employer->id}})" class="edit"
+                                                                        data-bs-toggle="modal" data-bs-target="#Modalfour">
+                                                                    <i class="lni lni-eye"></i>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                @empty
+                                                    Vous n'avez emis aucune demande
+                                                @endforelse
+                                                <!-- end table row -->
+                                                </tbody>
+                                            </table>
+                                            <!-- end table -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
           </div>
 
@@ -221,6 +433,7 @@
             </div>
         </div>
     </div>
+
 </div>
 @push('scripts')
 

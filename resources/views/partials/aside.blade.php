@@ -6,7 +6,7 @@
       </div>
       <nav class="sidebar-nav">
         <ul>
-          @if(Auth::user()->role == "employe")
+          @if(Auth::user()->role == "employe" || Auth::user()->role == "admin")
           <li class="nav-item {{ request()->is('home') ? 'active' : '' }}">
             <a href="{{url('home')}}" >
               <span class="icon">
@@ -21,7 +21,7 @@
           </li>
           @endif
 
-            @if(Auth::user()->role == "responsible")
+            @if(Auth::user()->role == "responsible" || Auth::user()->role == "admin")
           <li class="nav-item {{ request()->is('responsible') ? 'active' : '' }}">
             <a href="{{url('responsible')}}">
               <span class="icon">
@@ -42,7 +42,7 @@
           </li>
             @endif
 
-            @if(Auth::user()->role == "inspector")
+            @if(Auth::user()->role == "inspector" || Auth::user()->role == "admin")
           <li class="nav-item {{ request()->is('control') ? 'active' : '' }}">
             <a href="{{url('control')}}">
               <span class="icon">
@@ -63,7 +63,7 @@
           </li>
             @endif
 
-            @if(Auth::user()->role == "direction")
+            @if(Auth::user()->role == "direction" || Auth::user()->role == "admin")
           <li class="nav-item {{ request()->is('direction') ? 'active' : '' }}">
             <a href="{{url('direction')}}">
               <span class="icon">
@@ -84,7 +84,7 @@
           </li>
               @endif
 
-            @if(Auth::user()->role == "cashier")
+            @if(Auth::user()->role == "cashier" || Auth::user()->role == "admin")
           <li class="nav-item {{ request()->is('cashier') ? 'active' : '' }}">
             <a href="{{url('cashier')}}">
               <span class="icon">

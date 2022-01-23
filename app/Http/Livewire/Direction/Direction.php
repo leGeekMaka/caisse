@@ -25,7 +25,16 @@ class Direction extends Component
                                     ->where('direction',null)
                                     ->where('responsible','<>', null)
                                     ->where('control','<>', null)
-                                    ->get()
+                                    ->get(),
+            'directionRefuses' => Employer::where('direction',"refuse")
+                                    ->where('responsible','<>', null)
+                                    ->where('control','<>', null)
+                                    ->get(),
+            'directionValidate' => Employer::where('direction',"validate")
+                                    ->where('responsible','<>', null)
+                                    ->where('control','<>', null)
+                                    ->get(),
+
         ]);
     }
 
